@@ -7,13 +7,29 @@ const char Bond::BOND_ANNUAL_TYPE = 'A';
 const char Bond::BOND_SEMIANNUAL_TYPE = 'S';
 const char Bond::BOND_QUARTERLY_TYPE = 'Q';
 
+const int BOND_INVALID_BOND_TYPE = 99;
+
 Bond::Bond(double prin, double coup, double mkt, double YTM, char type)
 {
+    if ((type != BOND_ANNUAL_TYPE) &&
+        (type != BOND_SEMIANNUAL_TYPE) &&
+        (type != BOND_QUARTERLY_TYPE))
+    {
+        throw BOND_INVALID_BOND_TYPE;
+    }
+
+    cout << "In the bond constructor" << endl;
+
     setPrincipal(prin);
     setCouponRate(coup);
     setMarketRate(mkt);
     setMaturity(YTM);
     setPaymentType(type);
+}
+
+Bond::~Bond()
+{
+    cout << "In the ~bond deconstructor" << endl;
 }
 
 double Bond::getBondPrice()

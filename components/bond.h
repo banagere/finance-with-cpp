@@ -10,6 +10,8 @@ public:
 
     Bond(double, double, double, double, char);
 
+    ~Bond();
+
     double getBondPrice();
 
     void setPrincipal(double);
